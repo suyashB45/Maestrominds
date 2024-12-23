@@ -12,17 +12,7 @@ Maestrominds is a startup driven by passion and creativity in the AI/ML domain. 
 This repository includes detailed descriptions, codebases, and resources for the machine learning projects developed at Maestrominds. Each project is designed to solve specific problems, showcasing innovation and technical excellence.  
 
 ### 🔍 Featured Projects  
-1. **Customer Behavior Analysis**:  
-   Predict customer purchase trends using deep learning and clustering techniques.  
-
-2. **Predictive Maintenance**:  
-   A solution for detecting equipment failures using time-series analysis and sensor data.  
-
-3. **Image Classification Framework**:  
-   A customizable framework for classifying diverse datasets with transfer learning.  
-
-4. **Conversational AI Chatbot**:  
-   A LangChain-based chatbot that supports contextual understanding and intelligent responses.  
+**coming soon** 
 
 ## ✨ **What You Can Expect**  
 - Clean and modular code for easy integration.  
