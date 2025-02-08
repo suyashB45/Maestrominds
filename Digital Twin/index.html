@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Urban Digital Twin Simulation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <!-- Add OrbitControls for better 3D interaction -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Simulation Controls</h2>
+            <div class="control-group">
+                <label>Disaster Type</label>
+                <select id="disasterType">
+                    <option value="flood">Flood</option>
+                    <option value="earthquake">Earthquake</option>
+                    <option value="tsunami">Tsunami</option>
+                    <option value="volcano">Volcano</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label>Intensity Level: <span id="intensityValue">5</span></label>
+                <input type="range" id="intensity" min="1" max="10" value="5" class="slider">
+                <div class="intensity-labels">
+                    <span>Low</span>
+                    <span>Medium</span>
+                    <span>High</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Duration</label>
+                <div class="duration-input">
+                    <input type="number" id="duration" value="24" min="1" max="72">
+                    <span>hours</span>
+                </div>
+            </div>
+
+            <div class="simulation-controls">
+                <button class="primary-btn" onclick="startSimulation()">Start Simulation</button>
+                
+                <div class="time-controls">
+                    <button class="secondary-btn" onclick="pauseSimulation()">
+                        <span class="icon">⏯️</span> Pause
+                    </button>
+                    <button class="secondary-btn" onclick="resetSimulation()">
+                        <span class="icon">🔄</span> Reset
+                    </button>
+                </div>
+            </div>
+
+            <div class="alert-panel" id="alertPanel">
+                <div class="alert-icon">⚠️</div>
+                <div class="alert-content">
+                    <strong>Alert:</strong>
+                    <span id="alertMessage"></span>
+                </div>
+            </div>
+
+            <div class="camera-controls">
+                <h3>Camera Controls</h3>
+                <button class="view-btn" onclick="setTopView()">Top View</button>
+                <button class="view-btn" onclick="setIsometricView()">Isometric View</button>
+                <button class="view-btn" onclick="setStreetView()">Street View</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="simulation-view">
+                <div class="view-header">
+                    <h2>City Digital Twin</h2>
+                    <div class="simulation-time">Time: <span id="simulationTime">00:00</span></div>
+                </div>
+                <canvas id="simulationCanvas"></canvas>
+            </div>
+
+            <div class="stats-panel">
+                <div class="stat-card">
+                    <div class="stat-icon">🏢</div>
+                    <div class="stat-value" id="affectedBuildings">0</div>
+                    <div class="stat-label">Affected Buildings</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🛣️</div>
+                    <div class="stat-value" id="evacuationRoutes">0</div>
+                    <div class="stat-label">Evacuation Routes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⚠️</div>
+                    <div class="stat-value" id="riskLevel">Low</div>
+                    <div class="stat-label">Risk Level</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-value" id="affectedPopulation">0</div>
+                    <div class="stat-label">Affected Population</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
